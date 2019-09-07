@@ -9,7 +9,7 @@ import { ItemService } from "./item.service";
     templateUrl: "./item-detail.component.html"
 })
 export class ItemDetailComponent implements OnInit {
-    item: Item;
+    item: Item | undefined;
 
     constructor(
         private itemService: ItemService,
