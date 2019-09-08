@@ -14,4 +14,5 @@ refer to http://docs.nativescript.org/ui/theme.
 .bus-stop-input {
     text-align: center;
     font-size: 32;
+    margin-top: -24; /* half height of action bar */
 }
