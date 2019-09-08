@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
+import { getJSON } from "tns-core-modules/http";
 
 import { Item } from "./item";
 import { ItemService } from "./item.service";
@@ -19,5 +20,12 @@ export class ItemDetailComponent implements OnInit {
     ngOnInit(): void {
         const id = +this.route.snapshot.params.id;
         this.item = this.itemService.getItem(id);
+        getJSON("https://api.pugetsound.onebusaway.org/api/where/arrivals-and-departures-for-stop/1_67112.json?key=TEST&includeReferences=false&minutesBefore=0&minutesAfter=45")
+        .then((response) => {
+            console.log(response);
+        })
+        .catch((e) => {
+            console.error("Error:", e);
+        });
     }
 }
