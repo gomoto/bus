@@ -3,12 +3,12 @@ import { NativeScriptRouterModule } from "nativescript-angular/router";
 import { Routes } from "@angular/router";
 
 import { BusStopComponent } from "./bus-stop/bus-stop.component";
-import { ItemDetailComponent } from "./item/item-detail.component";
+import { BusStopDeparturesComponent } from "./bus-stop-departures/bus-stop-departures.component";
 
 const routes: Routes = [
     { path: "", redirectTo: "/bus-stop", pathMatch: "full" },
     { path: "bus-stop", component: BusStopComponent },
-    { path: "item/:id", component: ItemDetailComponent }
+    { path: "bus-stop-departures/:stopId", component: BusStopDeparturesComponent }
 ];
 
 @NgModule({
