@@ -3,10 +3,10 @@ import { TextField } from "tns-core-modules/ui/text-field";
 import { getJSON } from "tns-core-modules/http";
 
 @Component({
-    selector: "ns-items",
-    templateUrl: "./items.component.html"
+    selector: "ns-bus-stop",
+    templateUrl: "./bus-stop.component.html"
 })
-export class ItemsComponent {
+export class BusStopComponent {
     public submitStopId(args: {object: TextField}): void {
         // returnPress event will be triggered when user submits a value
         const textField = args.object;
