@@ -10,9 +10,3 @@ of writing your own CSS rules. For a full list of class names in the theme
 refer to http://docs.nativescript.org/ui/theme.
 */
 @import '~nativescript-theme-core/css/core.light.css';
-
-.bus-stop-input {
-    text-align: center;
-    font-size: 32;
-    margin-top: -24; /* half height of action bar */
-}

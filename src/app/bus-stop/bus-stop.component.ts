@@ -4,7 +4,8 @@ import { getJSON } from "tns-core-modules/http";
 
 @Component({
     selector: "ns-bus-stop",
-    templateUrl: "./bus-stop.component.html"
+    templateUrl: "./bus-stop.component.html",
+    styleUrls: ["./bus-stop.component.css"],
 })
 export class BusStopComponent {
     public submitStopId(args: {object: TextField}): void {
