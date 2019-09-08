@@ -1,23 +1,12 @@
-import { Component, OnInit } from "@angular/core";
+import { Component } from "@angular/core";
 import { TextField } from "tns-core-modules/ui/text-field";
 import { getJSON } from "tns-core-modules/http";
-
-import { Item } from "./item";
-import { ItemService } from "./item.service";
 
 @Component({
     selector: "ns-items",
     templateUrl: "./items.component.html"
 })
-export class ItemsComponent implements OnInit {
-    items: Array<Item> | undefined;
-
-    constructor(private itemService: ItemService) { }
-
-    ngOnInit(): void {
-        this.items = this.itemService.getItems();
-    }
-
+export class ItemsComponent {
     public submitStopId(args: {object: TextField}): void {
         // returnPress event will be triggered when user submits a value
         const textField = args.object;

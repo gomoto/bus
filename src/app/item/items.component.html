@@ -23,9 +23,8 @@ These components make use of several CSS class names that are part of the Native
 core theme, such as p-20, btn, h2, and list-group. You can view a full list of the
 class names available for styling your app at https://docs.nativescript.org/ui/theme.
 -->
-<DockLayout class="page" stretchLastChild="true">
+<FlexboxLayout class="page" alignItems="center" justifyContent="center">
     <TextField
-        dock="top"
         height="64"
         hint="Enter Stop ID"
         secure="false"
@@ -34,7 +33,7 @@ class names available for styling your app at https://docs.nativescript.org/ui/t
         (returnPress)="submitStopId($event)"
         class="input input-border bus-stop-input"
     ></TextField>
-    <ListView
+    <!-- <ListView
         class="list-group"
         [items]="items"
         dock="bottom">
@@ -42,5 +41,5 @@ class names available for styling your app at https://docs.nativescript.org/ui/t
             <Label [nsRouterLink]="['/item', item.id]" [text]="item.name"
                 class="list-group-item"></Label>
         </ng-template>
-    </ListView>
-</DockLayout>
+    </ListView> -->
+</FlexboxLayout>
