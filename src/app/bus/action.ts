@@ -1,3 +1,7 @@
-import { createAction } from '@ngrx/store';
+import { createAction, props } from '@ngrx/store';
+import { Departure } from './state';
 
-export const putBusStopDepartures = createAction('bus.putBusStopDepartures');
+export const departuresLoaded = createAction(
+    'bus.departuresLoaded',
+    props<{stopId: string, departures: Departure[]}>(),
+);
