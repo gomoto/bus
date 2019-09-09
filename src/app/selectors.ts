@@ -7,7 +7,7 @@ export const bus = createFeatureSelector<State, BusState>(features.bus);
 
 export const departuresList = createSelector(
     bus,
-    (state) => {
+    (state: BusState) => {
         const departures = state.departuresByStop[state.currentStopId];
         if (!departures) {
             return [];

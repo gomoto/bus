@@ -9,7 +9,14 @@ export const initialState: State = {
 
 export const reducer = createReducer(
     initialState,
-    on(Action.departuresLoaded, (state) => {
-        return state;
+    on(Action.departuresLoaded, (state, action) => {
+        const newState = {
+            ...state,
+            departuresByStop: {
+                ...state.departuresByStop,
+                [action.stopId]: action.departures,
+            },
+        };
+        return newState;
     }),
 );
