@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { departuresLoaded } from './action';
+import * as Action from './action';
 import { State } from './state';
 
 export const initialState: State = {
@@ -8,7 +8,7 @@ export const initialState: State = {
 
 export const reducer = createReducer(
     initialState,
-    on(departuresLoaded, (state) => {
+    on(Action.departuresLoaded, (state) => {
         return state;
     }),
 );
