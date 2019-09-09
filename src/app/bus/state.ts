@@ -1,7 +1,7 @@
 export interface State {
     departuresByStop: {
         [stopId: string]: Departure[];
-    }
+    };
 }
 
 export type StopId = string;
@@ -68,7 +68,7 @@ export interface Departure {
         status: "SCHEDULED"; // other statuses?
         totalDistanceAlongTrip: number;
         vehicleId: VehicleId;
-    }
+    };
     vehicleId: VehicleId;
 }
 
@@ -81,8 +81,8 @@ export interface DeparturesResponse {
             nearbyStopIds: string[];
             situationIds: [];
             stopId: StopId;
-        }
-    }
+        },
+    };
     text: string;
     version: number;
 }

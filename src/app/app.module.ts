@@ -2,11 +2,11 @@ import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
 import { StoreModule } from "@ngrx/store";
 import { NativeScriptModule } from "nativescript-angular/nativescript.module";
 
-import { reducer as busReducer } from "./bus/reducer";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
-import { BusStopComponent } from "./bus-stop/bus-stop.component";
 import { BusStopDeparturesComponent } from "./bus-stop-departures/bus-stop-departures.component";
+import { BusStopComponent } from "./bus-stop/bus-stop.component";
+import { reducer as busReducer } from "./bus/reducer";
 
 // Uncomment and add to NgModule imports if you need to use two-way binding
 // import { NativeScriptFormsModule } from "nativescript-angular/forms";
@@ -16,22 +16,22 @@ import { BusStopDeparturesComponent } from "./bus-stop-departures/bus-stop-depar
 
 @NgModule({
     bootstrap: [
-        AppComponent
-    ],
-    imports: [
-        NativeScriptModule,
-        AppRoutingModule,
-        StoreModule.forRoot({bus: busReducer}),
+        AppComponent,
     ],
     declarations: [
         AppComponent,
         BusStopComponent,
         BusStopDeparturesComponent,
     ],
+    imports: [
+        NativeScriptModule,
+        AppRoutingModule,
+        StoreModule.forRoot({bus: busReducer}),
+    ],
     providers: [],
     schemas: [
-        NO_ERRORS_SCHEMA
-    ]
+        NO_ERRORS_SCHEMA,
+    ],
 })
 /*
 Pass your application module to the bootstrapModule function located in main.ts to start your app

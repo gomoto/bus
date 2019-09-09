@@ -35,6 +35,10 @@
     "tslint": "^5.19.0",
     "typescript": "~3.5.3"
   },
+  "scripts": {
+    "lint": "tslint --project ./tsconfig.json",
+    "lint:fix": "tslint --project ./tsconfig.json --fix"
+  },
   "gitHead": "5fa096231ded5351b53700f0d111d60160e52ebc",
   "readme": "NativeScript Application"
 }

@@ -1,6 +1,6 @@
-import { createReducer, on } from '@ngrx/store';
+import { createReducer, on } from "@ngrx/store";
+import { putBusStopDepartures } from "./action";
 import { State } from "./state";
-import { putBusStopDepartures } from './action';
 
 export const initialState: State = {
     departuresByStop: {},
