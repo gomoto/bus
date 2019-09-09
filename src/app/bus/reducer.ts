@@ -3,6 +3,7 @@ import * as Action from './action';
 import { State } from './state';
 
 export const initialState: State = {
+    currentStopId: '',
     departuresByStop: {},
 };
 

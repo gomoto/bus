@@ -1,4 +1,5 @@
 export interface State {
+    currentStopId: string;
     departuresByStop: {
         [stopId: string]: Departure[];
     };
