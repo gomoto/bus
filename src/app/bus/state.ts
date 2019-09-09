@@ -55,7 +55,7 @@ export interface Departure {
         nextStop: StopId;
         nextStopTimeOffset: number;
         orientation: number;
-        phase: "in_progress"; // other phases?
+        phase: 'in_progress'; // other phases?
         position: {
             lat: number;
             lon: number;
@@ -65,7 +65,7 @@ export interface Departure {
         scheduledDistanceAlongTrip: number;
         serviceDate: number;
         situationIds: [];
-        status: "SCHEDULED"; // other statuses?
+        status: 'SCHEDULED'; // other statuses?
         totalDistanceAlongTrip: number;
         vehicleId: VehicleId;
     };

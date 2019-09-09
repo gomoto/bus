@@ -1,10 +1,10 @@
-import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
-    selector: "ns-bus-stop-departures",
-    styleUrls: ["./bus-stop-departures.component.css"],
-    templateUrl: "./bus-stop-departures.component.html",
+    selector: 'ns-bus-stop-departures',
+    styleUrls: ['./bus-stop-departures.component.css'],
+    templateUrl: './bus-stop-departures.component.html',
 })
 export class BusStopDeparturesComponent implements OnInit {
     public stopId: string | undefined; // undefined until OnInit
@@ -16,7 +16,7 @@ export class BusStopDeparturesComponent implements OnInit {
     public ngOnInit(): void {
         this.stopId = this.route.snapshot.params.stopId;
         if (!this.stopId) {
-            throw new Error("whoops");
+            throw new Error('whoops');
         }
     }
 }

@@ -1,3 +1,3 @@
-import { createAction } from "@ngrx/store";
+import { createAction } from '@ngrx/store';
 
-export const putBusStopDepartures = createAction("bus.putBusStopDepartures");
+export const putBusStopDepartures = createAction('bus.putBusStopDepartures');
