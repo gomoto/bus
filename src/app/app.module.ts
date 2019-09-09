@@ -1,6 +1,8 @@
 import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
+import { StoreModule } from "@ngrx/store";
 import { NativeScriptModule } from "nativescript-angular/nativescript.module";
 
+import { reducer as busReducer } from "./bus/reducer";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { BusStopComponent } from "./bus-stop/bus-stop.component";
@@ -18,7 +20,8 @@ import { BusStopDeparturesComponent } from "./bus-stop-departures/bus-stop-depar
     ],
     imports: [
         NativeScriptModule,
-        AppRoutingModule
+        AppRoutingModule,
+        StoreModule.forRoot({bus: busReducer}),
     ],
     declarations: [
         AppComponent,

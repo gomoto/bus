@@ -36,7 +36,7 @@ type RouteId = string;
 type TripId = string;
 type VehicleId = string;
 
-interface Departure {
+export interface Departure {
     arrivalEnabled: boolean;
     blockTripSequence: number;
     departureEnabled: boolean;
