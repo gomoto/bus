@@ -39,7 +39,8 @@ export class BusStopComponent {
         const stopId = textField.text;
         console.log('Submitted stop ID:', stopId);
 
-        this.routerExtensions.navigate(['/bus-stop-departures', stopId]);
+        // this.routerExtensions.navigate(['/bus-stop-departures', stopId]);
+        this.store.dispatch(BusAction.stopChosen({stopId}));
         const url = `https://api.pugetsound.onebusaway.org/api/where/arrivals-and-departures-for-stop/1_${stopId}.json?key=TEST&includeReferences=false&minutesBefore=0&minutesAfter=45`;
         getJSON(url)
         .then((response) => {

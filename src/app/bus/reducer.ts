@@ -19,4 +19,11 @@ export const reducer = createReducer(
         };
         return newState;
     }),
+    on(Action.stopChosen, (state, action) => {
+        const newState = {
+            ...state,
+            currentStopId: action.stopId,
+        };
+        return newState;
+    }),
 );

@@ -5,3 +5,8 @@ export const departuresLoaded = createAction(
     'bus.departuresLoaded',
     props<{stopId: string, departures: Departure[]}>(),
 );
+
+export const stopChosen = createAction(
+    'bus.stopChosen',
+    props<{stopId: string}>(),
+);
