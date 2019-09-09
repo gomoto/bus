@@ -6,7 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BusStopDeparturesComponent } from './bus-stop-departures/bus-stop-departures.component';
 import { BusStopComponent } from './bus-stop/bus-stop.component';
-import { reducer as busReducer } from './bus/reducer';
+import { reducers } from './reducers';
 
 // Uncomment and add to NgModule imports if you need to use two-way binding
 // import { NativeScriptFormsModule } from "nativescript-angular/forms";
@@ -26,7 +26,7 @@ import { reducer as busReducer } from './bus/reducer';
     imports: [
         NativeScriptModule,
         AppRoutingModule,
-        StoreModule.forRoot({bus: busReducer}),
+        StoreModule.forRoot(reducers),
     ],
     providers: [],
     schemas: [
