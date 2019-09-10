@@ -10,3 +10,13 @@ export const stopChosen = createAction(
     'bus.stopChosen',
     props<{stopId: string}>(),
 );
+
+export const stopNavigationSucceeded = createAction(
+    'bus.stopNavigationSucceeded',
+    props<{stopId: string}>(),
+);
+
+export const stopNavigationFailed = createAction(
+    'bus.stopNavigationFailed',
+    props<{stopId: string}>(),
+);

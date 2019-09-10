@@ -19,7 +19,7 @@ export const reducer = createReducer(
         };
         return newState;
     }),
-    on(Action.stopChosen, (state, action) => {
+    on(Action.stopNavigationSucceeded, (state, action) => {
         const newState = {
             ...state,
             currentStopId: action.stopId,

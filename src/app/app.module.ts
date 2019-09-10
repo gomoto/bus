@@ -1,4 +1,5 @@
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
+import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { NativeScriptModule } from 'nativescript-angular/nativescript.module';
 
@@ -6,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BusStopDeparturesComponent } from './bus-stop-departures/bus-stop-departures.component';
 import { BusStopComponent } from './bus-stop/bus-stop.component';
+import { Effects } from './effects';
 import { reducers } from './reducers';
 
 // Uncomment and add to NgModule imports if you need to use two-way binding
@@ -26,6 +28,7 @@ import { reducers } from './reducers';
     imports: [
         NativeScriptModule,
         AppRoutingModule,
+        EffectsModule.forRoot([Effects]),
         StoreModule.forRoot(reducers),
     ],
     providers: [],
