@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { select, Store } from '@ngrx/store';
+import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Departure } from '../bus/state';
@@ -18,7 +18,6 @@ export class BusStopDeparturesComponent {
         private store: Store<AppState>,
     ) {
         this.departures$ = this.store.pipe(
-            // select(selectors.departuresList)
             map((state) => {
                 console.log('state is:', state);
                 const projection = selectors.departuresList(state);
