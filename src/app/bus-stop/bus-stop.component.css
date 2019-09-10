@@ -8,3 +8,16 @@
     font-size: 32;
     /* margin-top: -24; half height of action bar */
 }
+.no-network-background {
+    height: 100%;
+    width: 100%;
+    opacity: 0.8;
+    background-color: #333333;
+}
+.no-network-message {
+    padding: 8 16;
+    margin: 16;
+    border-radius: 2;
+    background-color: #333333;
+    color: #ffffff;
+}

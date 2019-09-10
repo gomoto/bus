@@ -21,6 +21,7 @@ class names available for styling your app at https://docs.nativescript.org/ui/t
 <DockLayout stretchLastChild="true" class="page">
     <FlexboxLayout dock="top" justifyContent="center" alignItems="center" class="bus-stop-input-container">
         <TextField
+            isEnabled="{{hasNetworkConnection$ | async }}"
             height="64"
             hint="Bus Stop #"
             secure="false"
@@ -35,4 +36,12 @@ class names available for styling your app at https://docs.nativescript.org/ui/t
             <Label [text]="departure.routeLongName" class="list-group-item"></Label>
         </ng-template>
     </ListView>
+</DockLayout>
+
+<!-- Display overlay when no network connection -->
+<AbsoluteLayout *ngIf="!(hasNetworkConnection$ | async)" class="no-network-background"></AbsoluteLayout>
+<DockLayout *ngIf="!(hasNetworkConnection$ | async)" stretchLastChild="false" width="100%">
+    <FlexboxLayout dock="bottom" justifyContent="center" alignItems="center">
+        <Label text="Connect to the internet" class="no-network-message"></Label>
+    </FlexboxLayout>
 </DockLayout>
