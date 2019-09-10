@@ -1,5 +1,10 @@
+.bus-stop-input-container {
+    padding: 16 0;
+    border-bottom-width: 1px;
+    border-bottom-color: #222222;
+}
 .bus-stop-input {
     text-align: center;
     font-size: 32;
-    margin-top: -24; /* half height of action bar */
+    /* margin-top: -24; half height of action bar */
 }

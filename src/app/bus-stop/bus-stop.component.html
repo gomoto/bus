@@ -23,16 +23,19 @@ These components make use of several CSS class names that are part of the Native
 core theme, such as p-20, btn, h2, and list-group. You can view a full list of the
 class names available for styling your app at https://docs.nativescript.org/ui/theme.
 -->
-<FlexboxLayout class="page" alignItems="center" justifyContent="center">
-    <TextField
-        height="64"
-        hint="Bus Stop #"
-        secure="false"
-        keyboardType="number"
-        returnKeyType="go"
-        (returnPress)="submitStopId($event)"
-        class="input input-border bus-stop-input"
-    ></TextField>
+<DockLayout stretchLastChild="true" class="page">
+    <FlexboxLayout dock="top" justifyContent="center" alignItems="center" class="bus-stop-input-container">
+        <TextField
+            height="64"
+            hint="Bus Stop #"
+            secure="false"
+            keyboardType="number"
+            returnKeyType="go"
+            (returnPress)="submitStopId($event)"
+            class="input input-border bus-stop-input"
+        ></TextField>
+    </FlexboxLayout>
+    <Label text="hi"></Label>
     <Label *ngFor="let departure of departures$ | async" [text]="departure.routeLongName"></Label>
     <!-- <ListView
         class="list-group"
@@ -43,4 +46,4 @@ class names available for styling your app at https://docs.nativescript.org/ui/t
                 class="list-group-item"></Label>
         </ng-template>
     </ListView> -->
-</FlexboxLayout>
+</DockLayout>
