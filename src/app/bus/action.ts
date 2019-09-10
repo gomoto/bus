@@ -1,4 +1,5 @@
 import { createAction, props } from '@ngrx/store';
+import * as connectivity from 'tns-core-modules/connectivity';
 import { Departure } from './state';
 
 export const departuresLoaded = createAction(
@@ -24,4 +25,9 @@ export const stopNavigationSucceeded = createAction(
 export const stopNavigationFailed = createAction(
     'bus.stopNavigationFailed',
     props<{stopId: string}>(),
+);
+
+export const connectionTypeChanged = createAction(
+    'bus.connectionTypeChanged',
+    props<{connectionType: connectivity.connectionType}>(),
 );

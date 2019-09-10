@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { RouterExtensions } from 'nativescript-angular/router';
-import { from, of } from 'rxjs';
+import { from, fromEventPattern, of } from 'rxjs';
 import { catchError, map, mergeMap } from 'rxjs/operators';
+import * as connectivity from 'tns-core-modules/connectivity';
 import { getJSON } from 'tns-core-modules/http';
 import * as BusAction from './bus/action';
 import { DeparturesResponse } from './bus/state';
@@ -47,6 +48,19 @@ export class Effects {
             }),
         ),
     );
+
+    // Convert connectivity events into actions
+    public connectivity$ = createEffect(() => {
+        return fromEventPattern<connectivity.connectionType>(
+            function addHandler(handler) {
+                connectivity.startMonitoring(handler);
+            },
+            function removeHandler(handler) {
+                connectivity.stopMonitoring();
+            },
+        )
+        .pipe(map((connectionType) => BusAction.connectionTypeChanged({connectionType})));
+    });
 
     constructor(
         private actions$: Actions,

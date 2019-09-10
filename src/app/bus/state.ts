@@ -1,4 +1,7 @@
+import * as connectivity from 'tns-core-modules/connectivity';
+
 export interface State {
+    connectionType: connectivity.connectionType;
     currentStopId: string;
     departuresByStop: {
         [stopId: string]: Departure[];
