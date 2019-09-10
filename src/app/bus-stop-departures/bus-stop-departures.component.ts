@@ -1,22 +1,30 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component } from '@angular/core';
+import { select, Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { Departure } from '../bus/state';
+import * as selectors from '../selectors';
+import { State as AppState } from '../state';
 
 @Component({
     selector: 'ns-bus-stop-departures',
     styleUrls: ['./bus-stop-departures.component.css'],
     templateUrl: './bus-stop-departures.component.html',
 })
-export class BusStopDeparturesComponent implements OnInit {
-    public stopId: string | undefined; // undefined until OnInit
+export class BusStopDeparturesComponent {
+    public departures$: Observable<Departure[]>;
 
     constructor(
-        private route: ActivatedRoute,
-    ) {}
-
-    public ngOnInit(): void {
-        this.stopId = this.route.snapshot.params.stopId;
-        if (!this.stopId) {
-            throw new Error('whoops');
-        }
+        private store: Store<AppState>,
+    ) {
+        this.departures$ = this.store.pipe(
+            // select(selectors.departuresList)
+            map((state) => {
+                console.log('state is:', state);
+                const projection = selectors.departuresList(state);
+                console.log('projection is:', projection);
+                return projection;
+            }),
+        );
     }
 }

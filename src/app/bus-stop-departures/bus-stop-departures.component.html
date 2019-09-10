@@ -1,15 +1,10 @@
 <ActionBar title="Departures for Stop #{{stopId}}" class="action-bar">
 </ActionBar>
 
-<!-- <GridLayout class="page">
-    <ListView
-        class="list-group"
-        [items]="departures">
+<DockLayout stretchLastChild="true" class="page">
+    <ListView [items]="departures$ | async" class="list-group">
         <ng-template let-departure="item">
-            <Label 
-                [text]="departure.name"
-                class="list-group-item">
-            </Label>
+            <Label [text]="departure.routeLongName" class="list-group-item"></Label>
         </ng-template>
     </ListView>
-</GridLayout> -->
+</DockLayout>

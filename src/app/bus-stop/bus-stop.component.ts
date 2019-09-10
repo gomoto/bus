@@ -1,12 +1,9 @@
 import { Component } from '@angular/core';
-import { select, Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Store } from '@ngrx/store';
 import { getJSON } from 'tns-core-modules/http';
 import { TextField } from 'tns-core-modules/ui/text-field';
 import * as BusAction from '../bus/action';
-import { Departure, DeparturesResponse } from '../bus/state';
-import * as selectors from '../selectors';
+import { DeparturesResponse } from '../bus/state';
 import { State as AppState } from '../state';
 
 @Component({
@@ -15,21 +12,9 @@ import { State as AppState } from '../state';
     templateUrl: './bus-stop.component.html',
 })
 export class BusStopComponent {
-    public departures$: Observable<Departure[]>;
-
     constructor(
         private store: Store<AppState>,
-    ) {
-        this.departures$ = store.pipe(
-            // select(selectors.departuresList)
-            map((state) => {
-                console.log('state is:', state);
-                const projection = selectors.departuresList(state);
-                console.log('projection is:', projection);
-                return projection;
-            }),
-        );
-    }
+    ) {}
 
     public submitStopId(args: {object: TextField}): void {
         const textField = args.object;
