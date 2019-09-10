@@ -35,15 +35,9 @@ class names available for styling your app at https://docs.nativescript.org/ui/t
             class="input input-border bus-stop-input"
         ></TextField>
     </FlexboxLayout>
-    <Label text="hi"></Label>
-    <Label *ngFor="let departure of departures$ | async" [text]="departure.routeLongName"></Label>
-    <!-- <ListView
-        class="list-group"
-        [items]="items"
-        dock="bottom">
-        <ng-template let-item="item">
-            <Label [nsRouterLink]="['/item', item.id]" [text]="item.name"
-                class="list-group-item"></Label>
+    <ListView dock="bottom" [items]="departures$ | async" class="list-group">
+        <ng-template let-departure="item">
+            <Label [text]="departure.routeLongName" class="list-group-item"></Label>
         </ng-template>
-    </ListView> -->
+    </ListView>
 </DockLayout>
