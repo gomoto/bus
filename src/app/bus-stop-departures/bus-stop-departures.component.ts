@@ -32,6 +32,12 @@ export class BusStopDeparturesComponent {
     }
 
     public getDepartureText(departure: Departure): string {
-        return `${departure.routeShortName} - ${departure.tripHeadsign}`;
+        const arrivalMilliseconds = (
+            departure.predicted ?
+            departure.predictedArrivalTime :
+            departure.scheduledArrivalTime
+        );
+        const arrivalMinutes = Math.floor((arrivalMilliseconds - Date.now()) / 1000 / 60);
+        return `${departure.routeShortName} - ${departure.tripHeadsign}: ${arrivalMinutes} min ${departure.predicted ? '(predicted)' : '(scheduled)'}`;
     }
 }
