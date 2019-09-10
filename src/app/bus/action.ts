@@ -6,6 +6,11 @@ export const departuresLoaded = createAction(
     props<{stopId: string, departures: Departure[]}>(),
 );
 
+export const departuresFailedToLoad = createAction(
+    'bus.departuresFailedToLoad',
+    props<{stopId: string, error: Error}>(),
+);
+
 export const stopChosen = createAction(
     'bus.stopChosen',
     props<{stopId: string}>(),
