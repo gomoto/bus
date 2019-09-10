@@ -5,6 +5,11 @@ import { State } from './state';
 
 export const bus = createFeatureSelector<State, BusState>(features.bus);
 
+export const currentStopId = createSelector(
+    bus,
+    (state: BusState) => state.currentStopId,
+);
+
 export const departuresList = createSelector(
     bus,
     (state: BusState) => {

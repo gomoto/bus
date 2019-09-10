@@ -13,6 +13,7 @@ import { State as AppState } from '../state';
 })
 export class BusStopDeparturesComponent {
     public departures$: Observable<Departure[]>;
+    public stopId$: Observable<string>;
 
     constructor(
         private store: Store<AppState>,
@@ -24,6 +25,9 @@ export class BusStopDeparturesComponent {
                 console.log('projection is:', projection);
                 return projection;
             }),
+        );
+        this.stopId$ = this.store.pipe(
+            map((state) => selectors.currentStopId(state)),
         );
     }
 }
