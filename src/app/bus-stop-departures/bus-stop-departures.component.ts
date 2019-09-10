@@ -30,4 +30,8 @@ export class BusStopDeparturesComponent {
             map((state) => selectors.currentStopId(state)),
         );
     }
+
+    public getDepartureText(departure: Departure): string {
+        return `${departure.routeShortName} - ${departure.tripHeadsign}`;
+    }
 }

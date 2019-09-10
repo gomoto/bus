@@ -34,7 +34,7 @@ export class Effects {
             ofType(BusAction.stopChosen),
             mergeMap(({stopId}) => {
                 // Attempt to fetch departures.
-                const url = `https://api.pugetsound.onebusaway.org/api/where/arrivals-and-departures-for-stop/1_${stopId}.json?key=TEST&includeReferences=false&minutesBefore=0&minutesAfter=45`;
+                const url = `https://api.pugetsound.onebusaway.org/api/where/arrivals-and-departures-for-stop/1_${stopId}.json?key=TEST&includeReferences=false&minutesBefore=0&minutesAfter=15`;
                 return from(getJSON(url).then((response) => {
                     const departures = (response as DeparturesResponse).data.entry.arrivalsAndDepartures;
                     return departures;

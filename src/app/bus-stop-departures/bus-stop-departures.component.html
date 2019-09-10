@@ -4,7 +4,7 @@
 <DockLayout stretchLastChild="true" class="page">
     <ListView [items]="departures$ | async" class="list-group">
         <ng-template let-departure="item">
-            <Label [text]="departure.routeLongName" class="list-group-item"></Label>
+            <Label [text]="getDepartureText(departure)" class="list-group-item"></Label>
         </ng-template>
     </ListView>
 </DockLayout>
