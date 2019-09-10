@@ -11,12 +11,15 @@ export const initialState: State = {
 
 export const reducer = createReducer(
     initialState,
-    on(Action.departuresLoaded, (state, action) => {
+    on(Action.departuresLoaded, (state, {stopId, departures}) => {
         const newState = {
             ...state,
             departuresByStop: {
                 ...state.departuresByStop,
-                [action.stopId]: action.departures,
+                [stopId]: {
+                    departures,
+                    timestamp: Date.now(),
+                },
             },
         };
         return newState;

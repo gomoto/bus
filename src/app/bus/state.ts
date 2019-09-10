@@ -4,7 +4,11 @@ export interface State {
     connectionType: connectivity.connectionType;
     currentStopId: string;
     departuresByStop: {
-        [stopId: string]: Departure[];
+        [stopId: string]: {
+            // Departure info is always changing, so store the time at which the data was fetched
+            departures: Departure[];
+            timestamp: number; // milliseconds
+        };
     };
 }
 

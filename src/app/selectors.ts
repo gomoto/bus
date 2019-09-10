@@ -8,17 +8,16 @@ export const bus = createFeatureSelector<State, BusState>(features.bus);
 
 export const currentStopId = createSelector(
     bus,
-    (state: BusState) => state.currentStopId,
+    (state) => state.currentStopId,
 );
 
 export const departuresList = createSelector(
     bus,
-    (state: BusState) => {
-        const departures = state.departuresByStop[state.currentStopId];
-        if (!departures) {
+    (state) => {
+        if (!state.departuresByStop[state.currentStopId]) {
             return [];
         }
-        return departures;
+        return state.departuresByStop[state.currentStopId].departures;
     },
 );
 
