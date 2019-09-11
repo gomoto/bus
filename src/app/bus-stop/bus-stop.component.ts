@@ -7,7 +7,6 @@ import * as BusAction from '../bus/action';
 import * as selectors from '../selectors';
 import { State as AppState } from '../state';
 
-
 @Component({
     selector: 'ns-bus-stop',
     styleUrls: ['./bus-stop.component.css'],

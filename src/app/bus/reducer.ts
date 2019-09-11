@@ -11,6 +11,19 @@ export const initialState: State = {
 
 export const reducer = createReducer(
     initialState,
+    on(Action.departuresRefreshed, (state, {stopId}) => {
+        const newState = {
+            ...state,
+            departuresByStop: {
+                ...state.departuresByStop,
+                [stopId]: {
+                    ...state.departuresByStop[stopId],
+                    loading: true,
+                },
+            },
+        };
+        return newState;
+    }),
     on(Action.departuresLoaded, (state, {stopId, departures}) => {
         const newState = {
             ...state,
@@ -18,6 +31,21 @@ export const reducer = createReducer(
                 ...state.departuresByStop,
                 [stopId]: {
                     departures,
+                    loading: false,
+                    timestamp: Date.now(),
+                },
+            },
+        };
+        return newState;
+    }),
+    on(Action.departuresFailedToLoad, (state, {stopId}) => {
+        const newState = {
+            ...state,
+            departuresByStop: {
+                ...state.departuresByStop,
+                [stopId]: {
+                    ...state.departuresByStop[stopId],
+                    loading: false,
                     timestamp: Date.now(),
                 },
             },

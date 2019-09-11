@@ -10,6 +10,8 @@ import { BusStopComponent } from './bus-stop/bus-stop.component';
 import { Effects } from './effects';
 import { reducers } from './reducers';
 
+import './pull-to-refresh';
+
 // Uncomment and add to NgModule imports if you need to use two-way binding
 // import { NativeScriptFormsModule } from "nativescript-angular/forms";
 

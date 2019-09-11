@@ -21,6 +21,15 @@ export const departuresList = createSelector(
     },
 );
 
+// Are departures loading for the current bus stop?
+export const departuresListLoading = createSelector(
+    bus,
+    (state) => (
+        state.departuresByStop[state.currentStopId] &&
+        state.departuresByStop[state.currentStopId].loading
+    ),
+);
+
 export const hasNetworkConnection = createSelector(
     bus,
     ({connectionType}) => {

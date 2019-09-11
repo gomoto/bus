@@ -2,9 +2,11 @@
 </ActionBar>
 
 <DockLayout stretchLastChild="true" class="page">
-    <ListView [items]="departures$ | async" class="list-group">
-        <ng-template let-departure="item">
-            <Label [text]="getDepartureText(departure)" class="list-group-item"></Label>
-        </ng-template>
-    </ListView>
+    <PullToRefresh (refresh)="refreshDepartures($event)">
+        <ListView [items]="departures$ | async" class="list-group">
+            <ng-template let-departure="item">
+                <Label [text]="getDepartureText(departure)" class="list-group-item"></Label>
+            </ng-template>
+        </ListView>
+    </PullToRefresh>
 </DockLayout>

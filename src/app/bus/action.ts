@@ -2,6 +2,11 @@ import { createAction, props } from '@ngrx/store';
 import * as connectivity from 'tns-core-modules/connectivity';
 import { Departure } from './state';
 
+export const departuresRefreshed = createAction(
+    'bus.departuresRefreshed',
+    props<{stopId: string}>(),
+);
+
 export const departuresLoaded = createAction(
     'bus.departuresLoaded',
     props<{stopId: string, departures: Departure[]}>(),

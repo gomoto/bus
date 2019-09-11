@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { PullToRefresh } from '@nstudio/nativescript-pulltorefresh';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import * as BusAction from '../bus/action';
 import { Departure } from '../bus/state';
 import * as selectors from '../selectors';
 import { State as AppState } from '../state';
@@ -13,7 +15,9 @@ import { State as AppState } from '../state';
 })
 export class BusStopDeparturesComponent {
     public departures$: Observable<Departure[]>;
+    public departuresLoading$: Observable<boolean>;
     public stopId$: Observable<string>;
+    private stopId: string;
 
     constructor(
         private store: Store<AppState>,
@@ -26,9 +30,12 @@ export class BusStopDeparturesComponent {
                 return projection;
             }),
         );
+        this.departuresLoading$ = this.store.pipe(map((state) => selectors.departuresListLoading(state)));
         this.stopId$ = this.store.pipe(
             map((state) => selectors.currentStopId(state)),
         );
+        this.stopId = '';
+        this.stopId$.subscribe((stopId) => this.stopId = stopId);
     }
 
     public getDepartureText(departure: Departure): string {
@@ -39,5 +46,13 @@ export class BusStopDeparturesComponent {
         );
         const arrivalMinutes = Math.floor((arrivalMilliseconds - Date.now()) / 1000 / 60);
         return `${departure.routeShortName} - ${departure.tripHeadsign}: ${arrivalMinutes} min ${departure.predicted ? '(predicted)' : '(scheduled)'}`;
+    }
+
+    public refreshDepartures(event: {object: PullToRefresh}): void {
+        this.store.dispatch(BusAction.departuresRefreshed({stopId: this.stopId}));
+        // TODO: Hide refresh element once departures have been refreshed.
+        setTimeout(() => {
+            event.object.refreshing = false;
+        }, 1000);
     }
 }

@@ -28,10 +28,10 @@ export class Effects {
         ),
     );
 
-    // Fetch departures when stop is chosen.
+    // Fetch departures when departures are loaded or stop is chosen.
     public loadDepartures$ = createEffect(() =>
         this.actions$.pipe(
-            ofType(BusAction.stopChosen),
+            ofType(BusAction.stopChosen, BusAction.departuresRefreshed),
             mergeMap(({stopId}) => {
                 // Attempt to fetch departures.
                 const url = `https://api.pugetsound.onebusaway.org/api/where/arrivals-and-departures-for-stop/1_${stopId}.json?key=TEST&includeReferences=false&minutesBefore=0&minutesAfter=15`;

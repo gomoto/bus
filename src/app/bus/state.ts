@@ -8,6 +8,7 @@ export interface State {
             // Departure info is always changing, so store the time at which the data was fetched
             departures: Departure[];
             timestamp: number; // milliseconds
+            loading: boolean;
         };
     };
 }
