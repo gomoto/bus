@@ -22,18 +22,9 @@ export class BusStopDeparturesComponent {
     constructor(
         private store: Store<AppState>,
     ) {
-        this.departures$ = this.store.pipe(
-            map((state) => {
-                console.log('state is:', state);
-                const projection = selectors.departuresList(state);
-                console.log('projection is:', projection);
-                return projection;
-            }),
-        );
+        this.departures$ = this.store.pipe(map((state) => selectors.departuresList(state)));
         this.departuresLoading$ = this.store.pipe(map((state) => selectors.departuresListLoading(state)));
-        this.stopId$ = this.store.pipe(
-            map((state) => selectors.currentStopId(state)),
-        );
+        this.stopId$ = this.store.pipe(map((state) => selectors.currentStopId(state)));
         this.stopId = '';
         this.stopId$.subscribe((stopId) => this.stopId = stopId);
     }
