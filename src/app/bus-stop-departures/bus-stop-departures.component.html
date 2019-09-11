@@ -5,7 +5,10 @@
     <PullToRefresh (refresh)="refreshDepartures($event)">
         <ListView [items]="departures$ | async" class="list-group">
             <ng-template let-departure="item">
-                <Label [text]="getDepartureText(departure)" class="list-group-item"></Label>
+                <WrapLayout>
+                    <Label [text]="getDepartureRoute(departure)" class="list-group-item departure-route"></Label>
+                    <Label [text]="getDepartureTime(departure)" class="list-group-item departure-time"></Label>
+                </WrapLayout>
             </ng-template>
         </ListView>
     </PullToRefresh>

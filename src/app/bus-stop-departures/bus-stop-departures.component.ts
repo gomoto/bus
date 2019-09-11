@@ -29,14 +29,18 @@ export class BusStopDeparturesComponent {
         this.stopId$.subscribe((stopId) => this.stopId = stopId);
     }
 
-    public getDepartureText(departure: Departure): string {
+    public getDepartureRoute(departure: Departure): string {
+        return departure.routeShortName;
+    }
+
+    public getDepartureTime(departure: Departure): string {
         const arrivalMilliseconds = (
             departure.predicted ?
             departure.predictedArrivalTime :
             departure.scheduledArrivalTime
         );
         const arrivalMinutes = Math.floor((arrivalMilliseconds - Date.now()) / 1000 / 60);
-        return `${departure.routeShortName} - ${departure.tripHeadsign}: ${arrivalMinutes} min ${departure.predicted ? '(predicted)' : '(scheduled)'}`;
+        return `${arrivalMinutes} min ${departure.predicted ? '(predicted)' : '(scheduled)'}`;
     }
 
     public refreshDepartures(event: {object: PullToRefresh}): void {
